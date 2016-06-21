@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redux basic example</title>
+    <script src="//cdn.bootcss.com/redux/3.5.2/redux.min.js"></script>
+
+  </head>
+
+  <body>
+
+
+    <div>
+      <p>
+        Clicked: <span id="value">0</span> times
+        <button id="increment" BBQ=fun>+</button>
+        <button id="decrement">-</button>
+
+      </p>
+    </div>
+
+    <script>
+
+      //dispatch 调度
+      function count(state,action) {
+        if(typeof state === 'undefined'){
+          return 0
+        }
+
+        switch (action.type){
+          case 'ADD' : return state +=1;
+          case 'DEL' : return state -=1;
+        }
+      }
+      // store 存储中心
+      var store = Redux.createStore(count);
+
+      //view
+      function F5() {
+        document.getElementById('value').innerHTML = store.getState().toString();
+      }
+
+      F5();
+      store.subscribe(F5);
+
+      //action
+      document.getElementById('increment').addEventListener('click',function () {
+         store.dispatch({type : 'ADD' });
+      });
+
+
+      document.getElementById('decrement').addEventListener('click',function () {
+         store.dispatch({type : 'DEL' });
+      });
+
+
+
+    </script>
+    <!--<script>-->
+
+      <!--function counter(state,action){-->
+        <!--if(typeof  state === 'undefined'){-->
+          <!--return 0-->
+        <!--}-->
+        <!--switch (action.type){-->
+          <!--case "ADD": return  state+1;-->
+          <!--case "DEL": return  state-1;-->
+
+        <!--}-->
+      <!--}-->
+
+     <!--var store = Redux.createStore(counter);-->
+
+      <!--var valueEl = document.getElementById('value')-->
+
+      <!--function render() {-->
+        <!--valueEl.innerHTML = store.getState().toString()+'2112';-->
+      <!--}-->
+
+      <!--render()-->
+
+      <!--store.subscribe(render)-->
+
+      <!--document.getElementById('increment')-->
+        <!--.addEventListener('click', function () {-->
+          <!--store.dispatch({ type: 'ADD' })-->
+        <!--})-->
+
+      <!--document.getElementById('decrement')-->
+        <!--.addEventListener('click', function () {-->
+          <!--store.dispatch({ type: 'DEL' })-->
+        <!--})-->
+
+    <!--</script>-->
+  </body>
+</html>
