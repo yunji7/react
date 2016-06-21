@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!--<script src="http://rap.taobao.org/rap.plugin.js?projectId=4788"></script>-->
+    <script src="http://yunjiqun.top/cache/get1.php"></script>
+</head>
+<body>
+
+<div>2</div>
+<script>
+    $.ajax(
+            {
+                type:'get',
+                url:'http://yunji7.cn/cache/get1.php'+'?Jquery',
+                dataType:'jsonp',
+                jsonp:'callback',
+                success:function(json){
+                    console.log(json);
+                },
+                error:function(){
+                    alert('调用失败');
+                }
+            }
+    );
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>菜鸟教程 React 实例</title>
+    <script src="http://static.runoob.com/assets/react/react-0.14.7/build/react.min.js"></script>
+    <script src="http://static.runoob.com/assets/react/react-0.14.7/build/react-dom.min.js"></script>
+    <script src="http://static.runoob.com/assets/react/browser.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div id="example"></div>
+<script type="text/babel">
+    var MyComponent = React.createClass({
+
+        getInitialState:function () {
+            return {
+                array : '2xxx2'
+            }
+       },
+        componentDidMount:function () {
+                var sss = $.getJSON(
+                        'http://localhost/ck/Gulp/nodejs/index.php',0,function (json) {
+                            console.log(json);
+                            this.setState({
+                                array: json.toString()
+                            })
+                        }
+               .bind(this))
+        },
+        render:function () {
+            return (
+                    <div>{this.state.array}</div>
+            )
+        }
+
+    });
+
+    ReactDOM.render(
+            <MyComponent />,
+            document.getElementById('example')
+    );
+</script>
+
+<script>
+
+</script>
+</body>
+</html>
